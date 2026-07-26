@@ -7,7 +7,7 @@ A tool-calling LLM operates an STM32 Nucleo board over UART. The model reads sen
 | Layer | File | Role |
 |---|---|---|
 | Firmware | `agent_bridge.ino` | Whitelisted UART command server, on-device alarm latch, simulated temperature sampling at 2 Hz |
-| Protocol | — | ASCII line: `VERB [ARG]\n` → `OK &lt;payload&gt;` / `ERR &lt;code&gt; &lt;detail&gt;` |
+| Protocol | — | ASCII line: `VERB [ARG]\n` → `OK &lt; with < and &gt; with >;` / `ERR &lt;code&gt; &lt;detail&gt;` |
 | Driver | `device.py` | pyserial transport, DTR-safe open for Nucleo boards, typed command wrappers |
 | Tools | `tools.py` | JSON schemas + dispatch table. The model's only interface to hardware. |
 | Agent | `agent.py` | Ollama tool-calling loop. Temperature 0, max 8 steps. |
